@@ -3,21 +3,16 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>六天五夜行程 | 北京旅遊</title>
-  <meta name="description" content="北京六天五夜完整行程推薦 - 故宮、長城、頤和園一次玩遍">
-  
+  <title>六天五夜行程 | 北京旅遊網</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@400;500;700&family=Noto+Serif+SC:wght@700&display=swap" rel="stylesheet">
-  
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+JP:wght@400;700&family=Noto+Sans+JP:wght@400;500;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="css/style.css">
   <style>
-    /* Timeline 樣式增強 */
+    /* Timeline Styles */
     .timeline {
       position: relative;
-      padding-left: 50px;
-      max-width: 800px;
-      margin: 0 auto;
+      padding: 20px 0;
     }
 
     .timeline::before {
@@ -26,410 +21,373 @@
       left: 20px;
       top: 0;
       bottom: 0;
-      width: 3px;
-      background: linear-gradient(to bottom, var(--secondary), var(--primary));
+      width: 4px;
+      background: linear-gradient(to bottom, var(--color-primary), var(--color-secondary));
+      border-radius: 2px;
+    }
+
+    .timeline-item {
+      position: relative;
+      padding-left: 60px;
+      padding-bottom: 50px;
+    }
+
+    .timeline-item:last-child {
+      padding-bottom: 0;
+    }
+
+    .timeline-dot {
+      position: absolute;
+      left: 8px;
+      top: 0;
+      width: 28px;
+      height: 28px;
+      background: var(--color-primary);
+      border: 4px solid var(--color-light);
+      border-radius: 50%;
+      z-index: 1;
     }
 
     .timeline-day {
-      position: relative;
-      margin-bottom: 50px;
-      padding: 30px;
-      background: var(--white);
-      border-radius: 16px;
-      box-shadow: 0 4px 20px var(--shadow);
-      border-left: 5px solid var(--primary);
-    }
-
-    .timeline-day::before {
-      content: '';
-      position: absolute;
-      left: -42px;
-      top: 35px;
-      width: 24px;
-      height: 24px;
-      background: var(--secondary);
-      border: 4px solid var(--bg-light);
-      border-radius: 50%;
-    }
-
-    .day-header {
-      display: flex;
-      align-items: center;
-      gap: 16px;
-      margin-bottom: 20px;
-    }
-
-    .day-label {
       display: inline-block;
+      background: var(--color-primary);
+      color: #fff;
       padding: 6px 16px;
-      background: var(--primary);
-      color: var(--white);
       border-radius: 20px;
       font-size: 0.85rem;
-      font-weight: 500;
+      font-weight: 700;
+      margin-bottom: 15px;
     }
 
-    .day-title {
-      font-size: 1.5rem;
-      color: var(--primary);
-    }
-
-    .spots-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-      gap: 16px;
-    }
-
-    .spot-card {
-      padding: 20px;
-      background: var(--bg-light);
+    .timeline-content {
+      background: #fff;
       border-radius: 12px;
-      transition: var(--transition);
+      padding: 25px;
+      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
     }
 
-    .spot-card:hover {
-      transform: translateY(-4px);
-      box-shadow: 0 8px 25px var(--shadow);
+    .timeline-title {
+      font-family: var(--font-title);
+      font-size: 1.6rem;
+      color: var(--color-dark);
+      margin-bottom: 10px;
     }
 
-    .spot-card h4 {
-      font-size: 1.1rem;
-      color: var(--text-primary);
-      margin-bottom: 8px;
-      font-family: 'Noto Serif SC', serif;
+    .timeline-route {
+      color: var(--color-primary);
+      font-weight: 700;
+      margin-bottom: 15px;
+      padding-left: 20px;
+      position: relative;
     }
 
-    .spot-card p {
-      font-size: 0.9rem;
-      color: var(--text-secondary);
-      line-height: 1.5;
+    .timeline-route::before {
+      content: '→';
+      position: absolute;
+      left: 0;
+      color: var(--color-secondary);
     }
 
-    /* 主題色彩 */
-    .theme-welcome { border-left-color: #E67E22; }
-    .theme-welcome .day-label { background: #E67E22; }
-    
-    .theme-imperial { border-left-color: #8B2323; }
-    .theme-imperial .day-label { background: #8B2323; }
-    
-    .theme-heritage { border-left-color: #D4AF37; }
-    .theme-heritage .day-label { background: #D4AF37; }
-    
-    .theme-greatwall { border-left-color: #5D4E37; }
-    .theme-greatwall .day-label { background: #5D4E37; }
-    
-    .theme-garden { border-left-color: #27AE60; }
-    .theme-garden .day-label { background: #27AE60; }
-    
-    .theme-culture { border-left-color: #8E44AD; }
-    .theme-culture .day-label { background: #8E44AD; }
+    .timeline-desc {
+      color: var(--color-text-light);
+      line-height: 1.8;
+    }
 
-    .itinerary-summary {
+    .timeline-highlight {
       display: flex;
-      justify-content: center;
-      gap: 40px;
+      gap: 15px;
+      margin-top: 20px;
       flex-wrap: wrap;
-      padding: 30px;
-      background: var(--bg-dark);
-      color: var(--white);
-      border-radius: 16px;
-      margin-top: 60px;
     }
 
-    .summary-item {
+    .highlight-tag {
+      background: var(--color-light);
+      color: var(--color-dark);
+      padding: 6px 14px;
+      border-radius: 6px;
+      font-size: 0.85rem;
+    }
+
+    /* Nav */
+    .nav {
+      background: var(--color-dark);
+      padding: 15px 0;
+      position: sticky;
+      top: 0;
+      z-index: 100;
+    }
+
+    .nav-container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 20px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .nav-logo {
+      color: #fff;
+      font-family: var(--font-title);
+      font-size: 1.4rem;
+      text-decoration: none;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 30px;
+    }
+
+    .nav-link {
+      color: rgba(255, 255, 255, 0.8);
+      text-decoration: none;
+      font-size: 0.95rem;
+      transition: color 0.3s;
+    }
+
+    .nav-link:hover,
+    .nav-link.active {
+      color: var(--color-secondary);
+    }
+
+    /* Page Header */
+    .page-header {
+      background: linear-gradient(135deg, var(--color-dark) 0%, #2a2a4a 100%);
+      color: #fff;
+      padding: 80px 0 60px;
       text-align: center;
     }
 
-    .summary-number {
-      font-size: 2.5rem;
-      font-weight: 700;
-      color: var(--secondary);
-      font-family: 'Noto Serif SC', serif;
+    .page-title {
+      font-family: var(--font-title);
+      font-size: clamp(2rem, 6vw, 3rem);
+      margin-bottom: 15px;
     }
 
-    .summary-label {
-      font-size: 0.9rem;
-      opacity: 0.8;
+    .page-subtitle {
+      color: var(--color-secondary);
+      font-size: 1.2rem;
+      letter-spacing: 0.2em;
+    }
+
+    .info-section {
+      padding: 60px 0;
+    }
+
+    .info-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 30px;
+    }
+
+    .info-card {
+      background: #fff;
+      border-radius: 12px;
+      padding: 30px;
+      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+    }
+
+    .info-icon {
+      width: 50px;
+      height: 50px;
+      background: var(--color-light);
+      border-radius: 12px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.5rem;
+      margin-bottom: 20px;
+    }
+
+    .info-title {
+      font-family: var(--font-title);
+      font-size: 1.3rem;
+      color: var(--color-dark);
+      margin-bottom: 15px;
+    }
+
+    .info-list {
+      list-style: none;
+    }
+
+    .info-list li {
+      padding: 10px 0;
+      border-bottom: 1px solid var(--color-light);
+      color: var(--color-text-light);
+    }
+
+    .info-list li:last-child {
+      border-bottom: none;
+    }
+
+    .info-label {
+      font-weight: 700;
+      color: var(--color-dark);
+      margin-right: 10px;
     }
 
     @media (max-width: 768px) {
-      .timeline {
-        padding-left: 30px;
+      .nav-links {
+        display: none;
       }
 
       .timeline::before {
-        left: 12px;
+        left: 15px;
       }
 
-      .timeline-day::before {
-        left: -30px;
-        width: 18px;
-        height: 18px;
+      .timeline-item {
+        padding-left: 50px;
       }
 
-      .timeline-day {
-        padding: 20px;
-      }
-
-      .day-header {
-        flex-direction: column;
-        align-items: flex-start;
-        gap: 10px;
-      }
-
-      .spots-grid {
-        grid-template-columns: 1fr;
-      }
-
-      .itinerary-summary {
-        gap: 30px;
+      .timeline-dot {
+        left: 3px;
+        width: 24px;
+        height: 24px;
       }
     }
   </style>
 </head>
-<body data-page="itinerary">
-  
-  <header class="header">
-    <div class="container">
-      <a href="index.html" class="logo">
-        <div class="logo-icon">🏯</div>
-        <span>北京旅遊</span>
-      </a>
-      <nav class="nav">
-        <a href="index.html">首頁</a>
-        <a href="attractions.html">景點</a>
-        <a href="foods.html">美食</a>
-        <a href="itinerary.html" class="active">行程</a>
-        <a href="info.html">資訊</a>
-      </nav>
-      <div class="nav-toggle">
-        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-          <line x1="3" y1="12" x2="21" y2="12"></line>
-          <line x1="3" y1="6" x2="21" y2="6"></line>
-          <line x1="3" y1="18" x2="21" y2="18"></line>
-        </svg>
+<body>
+  <!-- 導航 -->
+  <nav class="nav">
+    <div class="nav-container">
+      <a href="index.html" class="nav-logo">北京</a>
+      <div class="nav-links">
+        <a href="index.html" class="nav-link">首頁</a>
+        <a href="attraction.html" class="nav-link">景點</a>
+        <a href="food.html" class="nav-link">美食</a>
+        <a href="itinerary.html" class="nav-link active">行程</a>
+        <a href="info.html" class="nav-link">資訊</a>
       </div>
     </div>
-  </header>
+  </nav>
 
+  <!-- 頁面標題 -->
   <section class="page-header">
-    <div class="container">
-      <h1 class="page-title">六天五夜行程</h1>
-      <div class="breadcrumbs">
-        <a href="index.html">首頁</a>
-        <span>›</span>
-        <span>行程</span>
-      </div>
-    </div>
+    <h1 class="page-title">六天五夜行程</h1>
+    <p class="page-subtitle">完整攻略・深度體驗</p>
   </section>
 
+  <!-- 行程時間線 -->
   <section class="section">
     <div class="container">
-      <!-- Day 1 -->
-      <div class="timeline-day theme-welcome fade-in">
-        <div class="day-header">
-          <span class="day-label">Day 1</span>
-          <h3 class="day-title">抵達北京 & 市區探索</h3>
-        </div>
-        <div class="spots-grid">
-          <div class="spot-card">
-            <h4>🏨 入住酒店</h4>
-            <p>推薦王府井或前門附近，交通便利，購物方便</p>
-          </div>
-          <div class="spot-card">
-            <h4>🍺 後海酒吧街</h4>
-            <p>感受老北京夜生活，酒吧林立，音樂氛圍佳</p>
-          </div>
-          <div class="spot-card">
-            <h4>🏮 大柵欄</h4>
-            <p>逛老字號商店，瑞蚨祥、內聯陞等百年老店</p>
+      <div class="timeline">
+        <!-- Day 1 -->
+        <div class="timeline-item">
+          <div class="timeline-dot"></div>
+          <div class="timeline-day">Day 1</div>
+          <div class="timeline-content">
+            <h3 class="timeline-title">皇城探索</h3>
+            <p class="timeline-route">天安門廣場 → 故宮 → 南鑼鼓巷</p>
+            <p class="timeline-desc">
+              抵達北京後，首先參觀世界上最大的廣場——天安門廣場，感受祖國的心臟。接著走進紫禁城，探索六百年明清皇宮的磅礡氣勢。傍晚前往南鑼鼓巷，這裡是北京最古老的巷弄之一，充滿文青小店與傳統建築的完美融合。
+            </p>
+            <div class="timeline-highlight">
+              <span class="highlight-tag">🚇 地鐵可達</span>
+              <span class="highlight-tag">📸 拍照聖地</span>
+              <span class="highlight-tag">☕ 咖啡時光</span>
+            </div>
           </div>
         </div>
-      </div>
 
-      <!-- Day 2 -->
-      <div class="timeline-day theme-imperial fade-in">
-        <div class="day-header">
-          <span class="day-label">Day 2</span>
-          <h3 class="day-title">故宮紫禁城深度遊</h3>
-        </div>
-        <div class="spots-grid">
-          <div class="spot-card">
-            <h4>🏛 故宮紫禁城</h4>
-            <p>預留4小時，細細品味明清皇室風華</p>
-          </div>
-          <div class="spot-card">
-            <h4>⛰ 景山公園</h4>
-            <p>俯瞰故宮全景，拍了望京樓最佳位置</p>
-          </div>
-          <div class="spot-card">
-            <h4>🛍 前門大街</h4>
-            <p>老北京購物步行街，許多特色小店</p>
+        <!-- Day 2 -->
+        <div class="timeline-item">
+          <div class="timeline-dot"></div>
+          <div class="timeline-day">Day 2</div>
+          <div class="timeline-content">
+            <h3 class="timeline-title">皇家園林</h3>
+            <p class="timeline-route">頤和園 → 北海公園</p>
+            <p class="timeline-desc">
+              上午遊覽中國現存最大的皇家園林——頤和園，漫步昆明湖畔，欣賞萬壽山的優美景色。下午前往北海公園，這裡是遼、金、元、明、清五代的皇家園林，白塔倒映在湖面上的景色令人難忘。
+            </p>
+            <div class="timeline-highlight">
+              <span class="highlight-tag">🏞️ 湖光山色</span>
+              <span class="highlight-tag">🚲 租船遊湖</span>
+              <span class="highlight-tag">🍜 皇家膳食</span>
+            </div>
           </div>
         </div>
-      </div>
 
-      <!-- Day 3 -->
-      <div class="timeline-day theme-heritage fade-in">
-        <div class="day-header">
-          <span class="day-label">Day 3</span>
-          <h3 class="day-title">天壇 & 天安門廣場</h3>
-        </div>
-        <div class="spots-grid">
-          <div class="spot-card">
-            <h4>🙏 天壇公園</h4>
-            <p>皇帝祭天場所，世界文化遺產，必遊</p>
-          </div>
-          <div class="spot-card">
-            <h4>🚩 天安門廣場</h4>
-            <p>世界最大廣場，毛主席紀念堂、人民大會堂</p>
-          </div>
-          <div class="spot-card">
-            <h4>🛍 王府井</h4>
-            <p>晚餐購物，北京最具代表性的商業街</p>
+        <!-- Day 3 -->
+        <div class="timeline-item">
+          <div class="timeline-dot"></div>
+          <div class="timeline-day">Day 3</div>
+          <div class="timeline-content">
+            <h3 class="timeline-title">古蹟祈福</h3>
+            <p class="timeline-route">天壇 → 王府井大街</p>
+            <p class="timeline-desc">
+              早餐後前往天壇公園，這是明清皇帝祭天祈穀的聖地，祈年殿的宏偉建築令人嘆為觀止。下午轉戰王府井大街，這裡是北京最繁華的商業街之一，既能品嚐北京小吃，也能購買特產紀念品。
+            </p>
+            <div class="timeline-highlight">
+              <span class="highlight-tag">🏛️ 世界遺產</span>
+              <span class="highlight-tag">🛍️ 購物天堂</span>
+              <span class="highlight-tag">🍖 北京烤鴨</span>
+            </div>
           </div>
         </div>
-      </div>
 
-      <!-- Day 4 -->
-      <div class="timeline-day theme-greatwall fade-in">
-        <div class="day-header">
-          <span class="day-label">Day 4</span>
-          <h3 class="day-title">慕田峪長城一日</h3>
-        </div>
-        <div class="spots-grid">
-          <div class="spot-card">
-            <h4>🏰 慕田峪長城</h4>
-            <p>編號段落完整，建議搭巴士或参加一日遊</p>
-          </div>
-          <div class="spot-card">
-            <h4>🏟 鳥巢</h4>
-            <p>晚間夜景絢麗，奧運地標必訪</p>
-          </div>
-          <div class="spot-card">
-            <h4>💧 水立方</h4>
-            <p>奧運游泳中心，夜間燈光秀精彩</p>
+        <!-- Day 4 -->
+        <div class="timeline-item">
+          <div class="timeline-dot"></div>
+          <div class="timeline-day">Day 4</div>
+          <div class="timeline-content">
+            <h3 class="timeline-title">萬里長城</h3>
+            <p class="timeline-route">八達嶺長城</p>
+            <p class="timeline-desc">
+              全天行程獻給世界上最偉大的建築——八達嶺長城。建議一大早出發，避開人潮。遊覽方式可選擇乘坐纜車或步行登城，感受「不到長城非好漢」的豪情壯志。下午下山後可在附近的農家院品嚐地道美食。
+            </p>
+            <div class="timeline-highlight">
+              <span class="highlight-tag">🏔️ 登城好漢</span>
+              <span class="highlight-tag">🚠 纜車遊覽</span>
+              <span class="highlight-tag">🥘 农家菜</span>
+            </div>
           </div>
         </div>
-      </div>
 
-      <!-- Day 5 -->
-      <div class="timeline-day theme-garden fade-in">
-        <div class="day-header">
-          <span class="day-label">Day 5</span>
-          <h3 class="day-title">皇家園林深度遊</h3>
-        </div>
-        <div class="spots-grid">
-          <div class="spot-card">
-            <h4>🌸 頤和園</h4>
-            <p>清朝皇家園林，昆明湖+萬壽山，風景絕美</p>
-          </div>
-          <div class="spot-card">
-            <h4>🏛 圓明園</h4>
-            <p>遺址公園，見證歷史，荷花節期間最美</p>
-          </div>
-          <div class="spot-card">
-            <h4>🎓 清華/北大</h4>
-            <p>校園參觀，中国最高學府，書香氣息浓厚</p>
+        <!-- Day 5 -->
+        <div class="timeline-item">
+          <div class="timeline-dot"></div>
+          <div class="timeline-day">Day 5</div>
+          <div class="timeline-content">
+            <h3 class="timeline-title">現代北京</h3>
+            <p class="timeline-route">鳥巢 → 水立方 → 798藝術區</p>
+            <p class="timeline-desc">
+              參觀2008 北京奧運的標誌性場館——國家體育場（鳥巢）和國家游泳中心（水立方）。下午前往798藝術區，這裡是北京最知名的當代藝術特區，匯集了眾多畫廊、工作室和時尚餐廳，是文藝青年的必訪之地。
+            </p>
+            <div class="timeline-highlight">
+              <span class="highlight-tag">🏟️ 奧運遺產</span>
+              <span class="highlight-tag">🎨 藝術展覽</span>
+              <span class="highlight-tag">📷 網紅打卡</span>
+            </div>
           </div>
         </div>
-      </div>
 
-      <!-- Day 6 -->
-      <div class="timeline-day theme-culture fade-in">
-        <div class="day-header">
-          <span class="day-label">Day 6</span>
-          <h3 class="day-title">胡同文化 & 返程</h3>
-        </div>
-        <div class="spots-grid">
-          <div class="spot-card">
-            <h4>🎨 南鑼鼓巷</h4>
-            <p>文創街區，許多特色小店、咖啡廰</p>
+        <!-- Day 6 -->
+        <div class="timeline-item">
+          <div class="timeline-dot"></div>
+          <div class="timeline-day">Day 6</div>
+          <div class="timeline-content">
+            <h3 class="timeline-title">文化掃尾</h3>
+            <p class="timeline-route">雍和宮 → 潘家園 → 機場</p>
+            <p class="timeline-desc">
+              上午參觀雍和宮，這裡是北京最大的藏傳佛教寺廟，建築融合了漢藏風格。如果時間允許，可前往潘家園古董市場淘選紀念品。根據航班時間前往北京首都國際機場，帶著滿滿的回憶返程。
+            </p>
+            <div class="timeline-highlight">
+              <span class="highlight-tag">🏯 藏傳佛寺</span>
+              <span class="highlight-tag">🏺 古董市場</span>
+              <span class="highlight-tag">✈️ 返程</span>
+            </div>
           </div>
-          <div class="spot-card">
-            <h4>🏺 潘家園</h4>
-            <p>古玩市場（週末開放），淘寶好去處</p>
-          </div>
-          <div class="spot-card">
-            <h4>✈️ 返程</h4>
-            <p>帶著滿滿回憶，從機場離開北京</p>
-          </div>
-        </div>
-      </div>
-
-      <!-- 行程總結 -->
-      <div class="itinerary-summary fade-in">
-        <div class="summary-item">
-          <div class="summary-number">6</div>
-          <div class="summary-label">天數</div>
-        </div>
-        <div class="summary-item">
-          <div class="summary-number">18</div>
-          <div class="summary-label">景點</div>
-        </div>
-        <div class="summary-item">
-          <div class="summary-number">3</div>
-          <div class="summary-label">世界遺產</div>
-        </div>
-        <div class="summary-item">
-          <div class="summary-number">∞</div>
-          <div class="summary-label">回憶</div>
         </div>
       </div>
     </div>
   </section>
 
-  <section class="section section--dark">
-    <div class="container">
-      <div class="section-header">
-        <h2 class="section-title">行前須知</h2>
-        <p class="section-subtitle">讓旅程更順利的提示</p>
-      </div>
-      <div class="tips-grid">
-        <div class="tip-card fade-in">
-          <div class="tip-icon">💳</div>
-          <h3>支付方式</h3>
-          <p>北京多數地方可使用支付寶/微信支付，準備少量現金備用</p>
-        </div>
-        <div class="tip-card fade-in">
-          <div class="tip-icon">🚇</div>
-          <h3>交通建議</h3>
-          <p>建議下載百度地圖或高德地圖，搭乘地鐵最方便</p>
-        </div>
-        <div class="tip-card fade-in">
-          <div class="tip-icon">📱</div>
-          <h3>網路建議</h3>
-          <p>購買當地SIM卡或租用移動WiFi，保持網路暢通</p>
-        </div>
-      </div>
-    </div>
-  </section>
-
+  <!-- Footer -->
   <footer class="footer">
     <div class="container">
-      <p>© 2024 北京旅遊 | 六天五夜完整行程</p>
+      <p>&copy; 2026 北京旅遊網. All rights reserved.</p>
     </div>
   </footer>
-
-  <script src="js/main.js"></script>
-  <script>
-    // 滾動動畫
-    const observerOptions = {
-      threshold: 0.1,
-      rootMargin: '0px 0px -50px 0px'
-    };
-
-    const observer = new IntersectionObserver((entries) => {
-      entries.forEach(entry => {
-        if (entry.isIntersecting) {
-          entry.target.classList.add('visible');
-        }
-      });
-    }, observerOptions);
-
-    document.querySelectorAll('.fade-in').forEach(el => {
-      observer.observe(el);
-    });
-  </script>
 </body>
 </html>
