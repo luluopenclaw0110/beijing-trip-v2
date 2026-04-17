@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>推薦行程 | 北京旅遊</title>
+  <meta name="description" content="北京推薦行程 - 三日遊行程規劃">
+  
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@400;500;700&family=Noto+Serif+SC:wght@700&display=swap" rel="stylesheet">
+  
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body data-page="itinerary">
+  
+  <header class="header">
+    <div class="container">
+      <a href="index.html" class="logo">
+        <div class="logo-icon">🏯</div>
+        <span>北京旅遊</span>
+      </a>
+      <nav class="nav">
+        <a href="index.html">首頁</a>
+        <a href="attractions/list.html">景點</a>
+        <a href="food/list.html">美食</a>
+        <a href="itinerary.html" class="active">行程</a>
+        <a href="info.html">資訊</a>
+      </nav>
+      <div class="nav-toggle">
+        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <line x1="3" y1="12" x2="21" y2="12"></line>
+          <line x1="3" y1="6" x2="21" y2="6"></line>
+          <line x1="3" y1="18" x2="21" y2="18"></line>
+        </svg>
+      </div>
+    </div>
+  </header>
+
+  <section class="page-header">
+    <div class="container">
+      <h1 class="page-title">推薦行程</h1>
+      <div class="breadcrumbs">
+        <a href="index.html">首頁</a>
+        <span>›</span>
+        <span>行程</span>
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container">
+      <div class="section-header">
+        <h2 class="section-title">三日精華遊</h2>
+        <p class="section-subtitle">暢遊北京經典景點</p>
+      </div>
+      
+      <div class="timeline">
+        <div class="timeline-item fade-in">
+          <div class="timeline-dot">1</div>
+          <div class="timeline-content">
+            <h3 class="timeline-title">Day 1 - 皇城探索</h3>
+            <div class="timeline-spots">
+              <span class="timeline-tag">天安門廣場</span>
+              <span class="timeline-tag">故宮</span>
+              <span class="timeline-tag">景山公園</span>
+            </div>
+          </div>
+        </div>
+        
+        <div class="timeline-item fade-in">
+          <div class="timeline-dot">2</div>
+          <div class="timeline-content">
+            <h3 class="timeline-title">Day 2 - 皇家園林</h3>
+            <div class="timeline-spots">
+              <span class="timeline-tag">頤和園</span>
+              <span class="timeline-tag">北海公園</span>
+              <span class="timeline-tag">什剎海</span>
+            </div>
+          </div>
+        </div>
+        
+        <div class="timeline-item fade-in">
+          <div class="timeline-dot">3</div>
+          <div class="timeline-content">
+            <h3 class="timeline-title">Day 3 - 古蹟巡禮</h3>
+            <div class="timeline-spots">
+              <span class="timeline-tag">天壇</span>
+              <span class="timeline-tag">慕田峪長城</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section section--dark">
+    <div class="container">
+      <div class="section-header">
+        <h2 class="section-title">我的收藏</h2>
+        <p class="section-subtitle">收藏的景點和美食</p>
+      </div>
+      <div id="saved-items" class="card-grid">
+        <p class="text-center" style="color: var(--text-secondary);">尚無收藏項目</p>
+      </div>
+    </div>
+  </section>
+
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-bottom">
+        <p>© 2024 北京旅遊. All rights reserved.</p>
+      </div>
+    </div>
+  </footer>
+
+  <script src="js/main.js"></script>
+  <script>
+    // Render saved items
+    document.addEventListener('DOMContentLoaded', () => {
+      const favorites = window.getFavorites();
+      const savedGrid = document.getElementById('saved-items');
+      
+      if (favorites.length > 0 && savedGrid) {
+        const spots = window.spotsData || [];
+        const foods = window.foodData || [];
+        
+        const items = favorites.map(f => {
+          return f.type === 'spot' 
+            ? spots.find(s => s.id === f.id)
+            : foods.find(f => f.id === f.id);
+        }).filter(Boolean);
+        
+        if (items.length > 0) {
+          savedGrid.innerHTML = items.map(item => `
+            <div class="card">
+              <div class="card-image">
+                <img src="${item.image}" alt="${item.name}">
+              </div>
+              <div class="card-body">
+                <h3 class="card-title">${item.name}</h3>
+              </div>
+            </div>
+          `).join('');
+        }
+      }
+    });
+  </script>
+</body>
+</html>

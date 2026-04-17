@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>景點列表 | 北京旅遊</title>
+  <meta name="description" content="北京景點大全 - 故宮、長城、頤和園等熱門景點">
+  
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@400;500;700&family=Noto+Serif+SC:wght@700&display=swap" rel="stylesheet">
+  
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body data-page="attractions">
+  
+  <header class="header">
+    <div class="container">
+      <a href="../index.html" class="logo">
+        <div class="logo-icon">🏯</div>
+        <span>北京旅遊</span>
+      </a>
+      <nav class="nav">
+        <a href="../index.html">首頁</a>
+        <a href="list.html" class="active">景點</a>
+        <a href="../food/list.html">美食</a>
+        <a href="../itinerary.html">行程</a>
+        <a href="../info.html">資訊</a>
+      </nav>
+      <div class="nav-toggle">
+        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <line x1="3" y1="12" x2="21" y2="12"></line>
+          <line x1="3" y1="6" x2="21" y2="6"></line>
+          <line x1="3" y1="18" x2="21" y2="18"></line>
+        </svg>
+      </div>
+    </div>
+  </header>
+
+  <section class="page-header">
+    <div class="container">
+      <h1 class="page-title">北京景點</h1>
+      <div class="breadcrumbs">
+        <a href="../index.html">首頁</a>
+        <span>›</span>
+        <span>景點</span>
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container">
+      <div class="filter-bar">
+        <button class="filter-btn active" data-filter="all">全部</button>
+        <button class="filter-btn" data-filter="宮殿">宮殿</button>
+        <button class="filter-btn" data-filter="園林">園林</button>
+        <button class="filter-btn" data-filter="寺廟">寺廟</button>
+        <button class="filter-btn" data-filter="古蹟">古蹟</button>
+      </div>
+      <div class="card-grid">
+        <!-- Rendered by JavaScript -->
+      </div>
+    </div>
+  </section>
+
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-bottom">
+        <p>© 2024 北京旅遊. All rights reserved.</p>
+      </div>
+    </div>
+  </footer>
+
+  <script src="../js/main.js"></script>
+</body>
+</html>

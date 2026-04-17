@@ -1,0 +1,924 @@
+/* ========================================
+   Beijing Trip v2 - 宮殿紅+琉璃金奢華風
+   ======================================== */
+
+/* CSS Variables */
+:root {
+  --primary: #8B2323;        /* 宮殿紅 */
+  --primary-dark: #6B1A1A;
+  --secondary: #D4AF37;      /* 琉璃金 */
+  --secondary-light: #E8C966;
+  --bg-dark: #1A1A1A;
+  --bg-light: #F5F5F0;
+  --text-primary: #2C2C2C;
+  --text-secondary: #666666;
+  --white: #FFFFFF;
+  --shadow: rgba(0, 0, 0, 0.15);
+  --transition: all 0.3s ease;
+}
+
+/* Reset & Base */
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: 'Noto Sans SC', 'Microsoft JhengHei', sans-serif;
+  background-color: var(--bg-light);
+  color: var(--text-primary);
+  line-height: 1.6;
+  overflow-x: hidden;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: 'Noto Serif SC', serif;
+  font-weight: 700;
+  line-height: 1.3;
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+  transition: var(--transition);
+}
+
+img {
+  max-width: 100%;
+  height: auto;
+  display: block;
+}
+
+ul {
+  list-style: none;
+}
+
+/* Container */
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 20px;
+}
+
+/* ========================================
+   Header & Navigation
+   ======================================== */
+.header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 1000;
+  background: linear-gradient(to bottom, rgba(26, 26, 26, 0.95), rgba(26, 26, 26, 0));
+  transition: var(--transition);
+  padding: 20px 0;
+}
+
+.header.scrolled {
+  background: rgba(26, 26, 26, 0.98);
+  padding: 10px 0;
+  box-shadow: 0 2px 20px var(--shadow);
+}
+
+.header .container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.logo {
+  font-family: 'Noto Serif SC', serif;
+  font-size: 1.5rem;
+  color: var(--secondary);
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.logo-icon {
+  width: 40px;
+  height: 40px;
+  background: var(--primary);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--secondary);
+  font-size: 1.2rem;
+}
+
+.nav {
+  display: flex;
+  gap: 30px;
+}
+
+.nav a {
+  color: var(--white);
+  font-size: 0.95rem;
+  position: relative;
+  padding: 5px 0;
+}
+
+.nav a::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 0;
+  height: 2px;
+  background: var(--secondary);
+  transition: var(--transition);
+}
+
+.nav a:hover::after,
+.nav a.active::after {
+  width: 100%;
+}
+
+.nav-toggle {
+  display: none;
+  color: var(--white);
+  font-size: 1.5rem;
+  cursor: pointer;
+}
+
+/* ========================================
+   Hero Section
+   ======================================== */
+.hero {
+  position: relative;
+  height: 100vh;
+  min-height: 600px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+}
+
+.hero-bg {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-size: cover;
+  background-position: center;
+  filter: brightness(0.6);
+}
+
+.hero-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(
+    to bottom,
+    rgba(26, 26, 26, 0.3) 0%,
+    rgba(26, 26, 26, 0.5) 100%
+  );
+}
+
+.hero-content {
+  position: relative;
+  z-index: 1;
+  text-align: center;
+  color: var(--white);
+  padding: 0 20px;
+}
+
+.hero-title {
+  font-size: clamp(2.5rem, 8vw, 4.5rem);
+  margin-bottom: 20px;
+  text-shadow: 2px 2px 10px rgba(0, 0, 0, 0.5);
+  animation: fadeInUp 1s ease;
+}
+
+.hero-subtitle {
+  font-size: clamp(1rem, 3vw, 1.5rem);
+  opacity: 0.9;
+  margin-bottom: 40px;
+  animation: fadeInUp 1s ease 0.2s both;
+}
+
+.hero-cta {
+  display: inline-block;
+  background: var(--primary);
+  color: var(--white);
+  padding: 15px 40px;
+  font-size: 1.1rem;
+  border-radius: 50px;
+  border: 2px solid var(--secondary);
+  transition: var(--transition);
+  animation: fadeInUp 1s ease 0.4s both;
+}
+
+.hero-cta:hover {
+  background: var(--secondary);
+  color: var(--bg-dark);
+  transform: translateY(-3px);
+  box-shadow: 0 10px 30px rgba(212, 175, 55, 0.3);
+}
+
+.scroll-indicator {
+  position: absolute;
+  bottom: 40px;
+  left: 50%;
+  transform: translateX(-50%);
+  color: var(--white);
+  animation: bounce 2s infinite;
+  cursor: pointer;
+}
+
+.scroll-indicator svg {
+  width: 30px;
+  height: 30px;
+}
+
+/* ========================================
+   Section Styles
+   ======================================== */
+.section {
+  padding: 80px 0;
+}
+
+.section-header {
+  text-align: center;
+  margin-bottom: 50px;
+}
+
+.section-title {
+  font-size: clamp(1.8rem, 5vw, 2.5rem);
+  color: var(--primary);
+  margin-bottom: 15px;
+  position: relative;
+  display: inline-block;
+}
+
+.section-title::after {
+  content: '';
+  position: absolute;
+  bottom: -10px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 60px;
+  height: 3px;
+  background: var(--secondary);
+}
+
+.section-subtitle {
+  color: var(--text-secondary);
+  font-size: 1.1rem;
+}
+
+.section--dark {
+  background: var(--bg-dark);
+}
+
+.section--dark .section-title {
+  color: var(--secondary);
+}
+
+.section--dark .section-subtitle {
+  color: rgba(255, 255, 255, 0.7);
+}
+
+/* ========================================
+   Card Grid
+   ======================================== */
+.card-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: 30px;
+}
+
+.card {
+  background: var(--white);
+  border-radius: 15px;
+  overflow: hidden;
+  box-shadow: 0 5px 20px var(--shadow);
+  transition: var(--transition);
+  cursor: pointer;
+}
+
+.card:hover {
+  transform: translateY(-10px);
+  box-shadow: 0 15px 40px var(--shadow);
+}
+
+.card-image {
+  position: relative;
+  height: 200px;
+  overflow: hidden;
+}
+
+.card-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: var(--transition);
+}
+
+.card:hover .card-image img {
+  transform: scale(1.1);
+}
+
+.card-badge {
+  position: absolute;
+  top: 15px;
+  left: 15px;
+  background: var(--primary);
+  color: var(--white);
+  padding: 5px 15px;
+  font-size: 0.8rem;
+  border-radius: 20px;
+}
+
+.card-body {
+  padding: 20px;
+}
+
+.card-title {
+  font-size: 1.2rem;
+  color: var(--text-primary);
+  margin-bottom: 10px;
+}
+
+.card-location {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  color: var(--text-secondary);
+  font-size: 0.9rem;
+  margin-bottom: 15px;
+}
+
+.card-location svg {
+  width: 16px;
+  height: 16px;
+}
+
+.card-footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding-top: 15px;
+  border-top: 1px solid rgba(0, 0, 0, 0.1);
+}
+
+.card-rating {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  color: var(--secondary);
+}
+
+.card-rating svg {
+  width: 18px;
+  height: 18px;
+  fill: var(--secondary);
+}
+
+.card-price {
+  font-weight: 600;
+  color: var(--primary);
+}
+
+/* ========================================
+   Food List (Horizontal)
+   ======================================== */
+.food-list {
+  display: flex;
+  gap: 25px;
+  overflow-x: auto;
+  padding: 20px 0;
+  scroll-snap-type: x mandatory;
+  -webkit-overflow-scrolling: touch;
+}
+
+.food-list::-webkit-scrollbar {
+  display: none;
+}
+
+.food-card {
+  flex: 0 0 350px;
+  scroll-snap-align: start;
+  background: var(--white);
+  border-radius: 15px;
+  overflow: hidden;
+  box-shadow: 0 5px 20px var(--shadow);
+  display: flex;
+  transition: var(--transition);
+}
+
+.food-card:hover {
+  transform: translateY(-5px);
+}
+
+.food-card-image {
+  flex: 0 0 140px;
+  height: 180px;
+}
+
+.food-card-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.food-card-body {
+  padding: 20px;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.food-card-title {
+  font-size: 1.1rem;
+  margin-bottom: 8px;
+}
+
+.food-card-type {
+  color: var(--text-secondary);
+  font-size: 0.9rem;
+  margin-bottom: 10px;
+}
+
+.food-card-price {
+  color: var(--primary);
+  font-weight: 600;
+}
+
+/* ========================================
+   Timeline
+   ======================================== */
+.timeline {
+  position: relative;
+  padding-left: 40px;
+}
+
+.timeline::before {
+  content: '';
+  position: absolute;
+  left: 15px;
+  top: 0;
+  bottom: 0;
+  width: 2px;
+  background: var(--secondary);
+}
+
+.timeline-item {
+  position: relative;
+  padding-bottom: 40px;
+}
+
+.timeline-item:last-child {
+  padding-bottom: 0;
+}
+
+.timeline-dot {
+  position: absolute;
+  left: -40px;
+  top: 0;
+  width: 32px;
+  height: 32px;
+  background: var(--primary);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--secondary);
+  font-weight: 700;
+  font-size: 0.9rem;
+}
+
+.timeline-content {
+  background: var(--white);
+  padding: 20px 25px;
+  border-radius: 15px;
+  box-shadow: 0 5px 20px var(--shadow);
+}
+
+.timeline-title {
+  font-size: 1.1rem;
+  margin-bottom: 10px;
+  color: var(--primary);
+}
+
+.timeline-spots {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.timeline-tag {
+  background: rgba(212, 175, 55, 0.2);
+  color: var(--text-primary);
+  padding: 5px 15px;
+  border-radius: 20px;
+  font-size: 0.85rem;
+}
+
+/* ========================================
+   Buttons
+   ======================================== */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 12px 30px;
+  border-radius: 50px;
+  font-size: 1rem;
+  transition: var(--transition);
+  cursor: pointer;
+  border: 2px solid transparent;
+}
+
+.btn-primary {
+  background: var(--primary);
+  color: var(--white);
+  border-color: var(--primary);
+}
+
+.btn-primary:hover {
+  background: var(--primary-dark);
+  border-color: var(--primary-dark);
+}
+
+.btn-secondary {
+  background: transparent;
+  color: var(--secondary);
+  border-color: var(--secondary);
+}
+
+.btn-secondary:hover {
+  background: var(--secondary);
+  color: var(--bg-dark);
+}
+
+/* ========================================
+   Page Header
+   ======================================== */
+.page-header {
+  background: var(--bg-dark);
+  padding: 120px 0 60px;
+  text-align: center;
+  color: var(--white);
+}
+
+.page-title {
+  font-size: clamp(2rem, 6vw, 3rem);
+  margin-bottom: 15px;
+}
+
+.breadcrumbs {
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+  color: rgba(255, 255, 255, 0.7);
+  font-size: 0.95rem;
+}
+
+.breadcrumbs a:hover {
+  color: var(--secondary);
+}
+
+.breadcrumbs span {
+  color: var(--secondary);
+}
+
+/* ========================================
+   Filter Bar
+   ======================================== */
+.filter-bar {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 15px;
+  margin-bottom: 40px;
+  padding: 20px;
+  background: var(--white);
+  border-radius: 15px;
+  box-shadow: 0 5px 20px var(--shadow);
+}
+
+.filter-btn {
+  padding: 10px 25px;
+  border-radius: 25px;
+  background: transparent;
+  color: var(--text-primary);
+  transition: var(--transition);
+}
+
+.filter-btn:hover,
+.filter-btn.active {
+  background: var(--primary);
+  color: var(--white);
+}
+
+/* ========================================
+   Detail Page
+   ======================================== */
+.detail-hero {
+  position: relative;
+  height: 60vh;
+  min-height: 400px;
+}
+
+.detail-hero-bg {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-size: cover;
+  background-position: center;
+  filter: brightness(0.5);
+}
+
+.detail-content {
+  padding: 60px 0;
+}
+
+.detail-info {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 25px;
+  margin-bottom: 40px;
+}
+
+.info-box {
+  background: var(--white);
+  padding: 25px;
+  border-radius: 15px;
+  box-shadow: 0 5px 20px var(--shadow);
+}
+
+.info-box-label {
+  color: var(--text-secondary);
+  font-size: 0.9rem;
+  margin-bottom: 8px;
+}
+
+.info-box-value {
+  font-size: 1.1rem;
+  font-weight: 600;
+  color: var(--text-primary);
+}
+
+.detail-description {
+  background: var(--white);
+  padding: 30px;
+  border-radius: 15px;
+  box-shadow: 0 5px 20px var(--shadow);
+  margin-bottom: 40px;
+}
+
+.detail-description h3 {
+  color: var(--primary);
+  margin-bottom: 15px;
+}
+
+.detail-description p {
+  line-height: 1.8;
+}
+
+.favorite-btn {
+  position: fixed;
+  bottom: 30px;
+  right: 30px;
+  width: 60px;
+  height: 60px;
+  background: var(--primary);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--white);
+  cursor: pointer;
+  box-shadow: 0 5px 20px var(--shadow);
+  transition: var(--transition);
+  z-index: 100;
+}
+
+.favorite-btn:hover {
+  transform: scale(1.1);
+}
+
+.favorite-btn.active {
+  background: var(--secondary);
+}
+
+.favorite-btn svg {
+  width: 28px;
+  height: 28px;
+}
+
+/* ========================================
+   Footer
+   ======================================== */
+.footer {
+  background: var(--bg-dark);
+  color: var(--white);
+  padding: 60px 0 30px;
+}
+
+.footer-content {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 40px;
+  margin-bottom: 40px;
+}
+
+.footer-section h4 {
+  color: var(--secondary);
+  margin-bottom: 20px;
+  font-size: 1.1rem;
+}
+
+.footer-section p,
+.footer-section a {
+  color: rgba(255, 255, 255, 0.7);
+  margin-bottom: 10px;
+  display: block;
+}
+
+.footer-section a:hover {
+  color: var(--secondary);
+}
+
+.footer-bottom {
+  padding-top: 30px;
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+  text-align: center;
+  color: rgba(255, 255, 255, 0.5);
+  font-size: 0.9rem;
+}
+
+/* ========================================
+   Weather Widget
+   ======================================== */
+.weather-widget {
+  position: fixed;
+  bottom: 30px;
+  right: 30px;
+  background: var(--white);
+  padding: 20px;
+  border-radius: 15px;
+  box-shadow: 0 5px 30px var(--shadow);
+  z-index: 100;
+  min-width: 180px;
+}
+
+.weather-widget-close {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  cursor: pointer;
+  color: var(--text-secondary);
+}
+
+.weather-location {
+  font-size: 0.9rem;
+  color: var(--text-secondary);
+  margin-bottom: 5px;
+}
+
+.weather-temp {
+  font-size: 2rem;
+  font-weight: 700;
+  color: var(--primary);
+}
+
+.weather-condition {
+  font-size: 0.9rem;
+  color: var(--text-secondary);
+}
+
+/* ========================================
+   Animations
+   ======================================== */
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes bounce {
+  0%, 20%, 50%, 80%, 100% {
+    transform: translateX(-50%) translateY(0);
+  }
+  40% {
+    transform: translateX(-50%) translateY(-10px);
+  }
+  60% {
+    transform: translateX(-50%) translateY(-5px);
+  }
+}
+
+.fade-in {
+  opacity: 0;
+  transform: translateY(30px);
+  transition: opacity 0.6s ease, transform 0.6s ease;
+}
+
+.fade-in.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* ========================================
+   Responsive
+   ======================================== */
+@media (max-width: 768px) {
+  .nav {
+    position: fixed;
+    top: 0;
+    right: -100%;
+    width: 80%;
+    max-width: 300px;
+    height: 100vh;
+    background: var(--bg-dark);
+    flex-direction: column;
+    padding: 80px 30px 30px;
+    gap: 20px;
+    transition: var(--transition);
+  }
+
+  .nav.open {
+    right: 0;
+  }
+
+  .nav-toggle {
+    display: block;
+    z-index: 1001;
+  }
+
+  .section {
+    padding: 60px 0;
+  }
+
+  .hero-title {
+    font-size: 2rem;
+  }
+
+  .card-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .food-card {
+    flex-direction: column;
+  }
+
+  .food-card-image {
+    flex: 0 0 150px;
+  }
+
+  .detail-hero {
+    height: 50vh;
+  }
+
+  .weather-widget {
+    bottom: 20px;
+    right: 20px;
+    left: 20px;
+    min-width: auto;
+  }
+
+  .favorite-btn {
+    bottom: 20px;
+    right: 20px;
+    width: 50px;
+    height: 50px;
+  }
+
+  .favorite-btn svg {
+    width: 24px;
+    height: 24px;
+  }
+}
+
+/* ========================================
+   Utility Classes
+   ======================================== */
+.text-center { text-align: center; }
+.text-primary { color: var(--primary); }
+.text-secondary { color: var(--secondary); }
+.mb-0 { margin-bottom: 0; }
+.mb-1 { margin-bottom: 10px; }
+.mb-2 { margin-bottom: 20px; }
+.mb-3 { margin-bottom: 30px; }
+.mt-1 { margin-top: 10px; }
+.mt-2 { margin-top: 20px; }
+.mt-3 { margin-top: 30px; }
