@@ -167,6 +167,38 @@
   </div>
 
   <!-- Scripts -->
-  <script src="js/main.js"></script>
+    <script>
+    // Spots Data
+    const spotsData = [
+      {id: 'spot_01', name: '故宮紫禁城', location: '東城區景山前街4號', rating: 4.9, category: '宮殿', image: 'images/spots/spot_01_gugong.jpg'},
+      {id: 'spot_02', name: '慕田峪長城', location: '北京市懷柔區', rating: 4.8, category: '古蹟', image: 'images/spots/spot_02_mutianyu.jpg'},
+      {id: 'spot_03', name: '頤和園', location: '北京市海淀區', rating: 4.8, category: '園林', image: 'images/spots/spot_03_yiheyuan.jpg'},
+      {id: 'spot_04', name: '天壇', location: '東城區', rating: 4.7, category: '古蹟', image: 'images/spots/spot_04_tiantan.jpg'},
+    ];
+
+    // Food Data
+    const foodData = [
+      {id: 'food_01', name: '全聚德烤鸭', cuisine: '宮廷菜', priceRange: '¥150-200', image: 'images/food/food_01_quanjude.jpg'},
+      {id: 'food_02', name: '東來順', cuisine: '火鍋', priceRange: '¥100-150', image: 'images/food/food_02_donglaishun.jpg'},
+      {id: 'food_03', name: '炸醬麵', cuisine: '小吃', priceRange: '¥25-40', image: 'images/food/food_03_zajiangmian.jpg'},
+    ];
+
+    // Init Home Page
+    document.addEventListener('DOMContentLoaded', function() {
+      var spotGrid = document.getElementById('spot-grid');
+      if (spotGrid) {
+        spotGrid.innerHTML = spotsData.map(function(spot) {
+          return '<div class="card fade-in"><div class="card-image"><img src="'+spot.image+'" alt="'+spot.name+'"><span class="card-badge">'+spot.category+'</span></div><div class="card-body"><h3 class="card-title">'+spot.name+'</h3><div class="card-location">'+spot.location+'</div><div class="card-footer"><div class="card-rating">'+spot.rating+'</div></div></div></div>';
+        }).join('');
+      }
+
+      var foodList = document.getElementById('food-list');
+      if (foodList) {
+        foodList.innerHTML = foodData.map(function(food) {
+          return '<div class="food-card"><div class="food-card-image"><img src="'+food.image+'" alt="'+food.name+'"></div><div class="food-card-body"><h3 class="food-card-title">'+food.name+'</h3><div class="food-card-type">'+food.cuisine+'</div><div class="food-card-price">'+food.priceRange+'</div></div></div>';
+        }).join('');
+      }
+    });
+  </script>
 </body>
 </html>
