@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>北京美食 | 北京旅遊</title>
+  <link rel="stylesheet" href="../css/style.css">
+</head>
+<body data-page="food">
+  <header class="header">
+    <div class="container">
+      <a href="../index.html" class="logo"><span>北京旅遊</span></a>
+      <nav class="nav">
+        <a href="../index.html">首頁</a>
+        <a href="../attractions/list.html">景點</a>
+        <a href="list.html" class="active">美食</a>
+        <a href="../itinerary.html">行程</a>
+        <a href="../info.html">資訊</a>
+      </nav>
+    </div>
+  </header>
+  <section class="page-header">
+    <div class="container">
+      <h1 class="page-title">北京美食</h1>
+    </div>
+  </section>
+  <section class="section">
+    <div class="container">
+      <div class="card-grid" id="food-grid"></div>
+    </div>
+  </section>
+  <script>
+    const foodData = [
+      {id: 'food_01', name: '全聚德烤鸭', location: '和平門外大街', cuisine: '宮廷菜', price: '$$$', rating: 4.7, image: '../images/food/food_01_quanjude.jpg', description: '百年老字號，果木烤鴨'},
+      {id: 'food_02', name: '東來順', location: '王府井大街', cuisine: '火鍋', price: '$$', rating: 4.6, image: '../images/food/food_02_donglaishun.jpg', description: '老字號銅鍋涮肉'},
+      {id: 'food_03', name: '炸醬麵', location: '胡同內小店', cuisine: '小吃', price: '$', rating: 4.5, image: '../images/food/food_03_zajiangmian.jpg', description: '老北京道地小吃'},
+      {id: 'food_04', name: '羊蝎子火鍋', location: '簋街', cuisine: '火鍋', price: '$$', rating: 4.6, image: '../images/food/food_04_yangxiezi.jpg', description: '老北京特色火鍋'},
+      {id: 'food_05', name: '銅鍋涮肉', location: '磁器口', cuisine: '火鍋', price: '$$', rating: 4.7, image: '../images/food/food_05_tongguoshuanyuro.jpg', description: '2025北京必吃榜'},
+      {id: 'food_06', name: '京味小吃', location: '南鑼鼓巷', cuisine: '小吃', price: '$', rating: 4.4, image: '../images/food/food_06_jingweixiaochi.jpg', description: '豆汁、驢打滾、艾窩窩'},
+    ];
+    document.getElementById('food-grid').innerHTML = foodData.map(f => '<div class="card"><div class="card-image"><img src="'+f.image+'"></div><div class="card-body"><h3>'+f.name+'</h3><p>'+f.description+'</p></div></div>').join('');
+  </script>
+</body>
+</html>
