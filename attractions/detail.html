@@ -68,6 +68,25 @@
     </div>
   </footer>
 
-  <script src="../js/main.js"></script>
+    <script>
+    const spotsData = [
+      {id: 'spot_01', name: '故宮紫禁城', location: '東城區景山前街4號', rating: 4.9, category: '宮殿', image: 'images/spots/spot_01_gugong.jpg', description: '明清兩代皇家宮殿，世界文化遺產', openTime: '08:30-17:00', ticket: '旺季60元', address: '北京市東城區景山前街4號'},
+      {id: 'spot_02', name: '慕田峪長城', location: '北京市懷柔區', rating: 4.8, category: '古蹟', image: 'images/spots/spot_02_mutianyu.jpg', description: '北京著名長城，保存最完好', openTime: '07:30-18:00', ticket: '40元', address: '北京市懷柔區渤海鎮'},
+      {id: 'spot_03', name: '頤和園', location: '北京市海淀區', rating: 4.8, category: '園林', image: 'images/spots/spot_03_yiheyuan.jpg', description: '清代皇家避暑行宮', openTime: '06:30-18:00', ticket: '30元', address: '北京市海淀區宮門前街19號'},
+      {id: 'spot_04', name: '天壇', location: '北京市東城區', rating: 4.7, category: '寺廟', image: 'images/spots/spot_04_tiantan.jpg', description: '明清帝王祭天場所', openTime: '06:00-21:00', ticket: '15元', address: '北京市東城區天壇內東里7號'},
+    ];
+
+    document.addEventListener('DOMContentLoaded', function() {
+      var params = new URLSearchParams(window.location.search);
+      var id = params.get('id');
+      var spot = spotsData.find(function(s) { return s.id === id; });
+      if (spot) {
+        document.querySelector('.detail-title').textContent = spot.name;
+        document.querySelector('.detail-hero-bg').style.backgroundImage = 'url(' + spot.image + ')';
+        document.querySelector('.detail-info').innerHTML = '<div class="info-box"><div class="info-box-label">開放時間</div><div class="info-box-value">' + spot.openTime + '</div></div><div class="info-box"><div class="info-box-label">門票</div><div class="info-box-value">' + spot.ticket + '</div></div><div class="info-box"><div class="info-box-label">地址</div><div class="info-box-value">' + spot.address + '</div></div><div class="info-box"><div class="info-box-label">評分</div><div class="info-box-value">⭐ ' + spot.rating + '</div></div>';
+        document.querySelector('.detail-description').innerHTML = '<h3>關於 ' + spot.name + '</h3><p>' + spot.description + '</p>';
+      }
+    });
+  </script>
 </body>
 </html>
