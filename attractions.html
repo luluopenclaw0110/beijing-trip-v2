@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>景點列表 | 北京旅遊</title>
+  <meta name="description" content="北京精選景點 - 故宮、長城、頤和園等12個必遊景點">
+  
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@400;500;700&family=Noto+Serif+SC:wght@700&display=swap" rel="stylesheet">
+  
+  <!-- Styles -->
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body data-page="attractions">
+  
+  <!-- Header -->
+  <header class="header">
+    <div class="container">
+      <a href="index.html" class="logo">
+        <div class="logo-icon">🏯</div>
+        <span>北京旅遊</span>
+      </a>
+      <nav class="nav">
+        <a href="index.html">首頁</a>
+        <a href="list.html" class="active">景點</a>
+        <a href="foods.html">美食</a>
+        <a href="../itinerary.html">行程</a>
+        <a href="../info.html">資訊</a>
+      </nav>
+      <div class="nav-toggle">
+        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <line x1="3" y1="12" x2="21" y2="12"></line>
+          <line x1="3" y1="6" x2="21" y2="6"></line>
+          <line x1="3" y1="18" x2="21" y2="18"></line>
+        </svg>
+      </div>
+    </div>
+  </header>
+
+  <!-- Page Header -->
+  <section class="page-header">
+    <div class="container">
+      <h1 class="page-title">北京景點</h1>
+      <div class="breadcrumbs">
+        <a href="index.html">首頁</a>
+        <span>›</span>
+        <span>景點列表</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- Filter Bar -->
+  <section class="section" style="padding-bottom: 0;">
+    <div class="container">
+      <div class="filter-bar">
+        <button class="filter-btn active" data-filter="all">全部景點</button>
+        <button class="filter-btn" data-filter="宮殿">宮殿</button>
+        <button class="filter-btn" data-filter="園林">園林</button>
+        <button class="filter-btn" data-filter="寺廟">寺廟</button>
+        <button class="filter-btn" data-filter="古蹟">古蹟</button>
+        <button class="filter-btn" data-filter="現代">現代</button>
+        <button class="filter-btn" data-filter="市集">市集</button>
+        <button class="filter-btn" data-filter="公園">公園</button>
+      </div>
+    </div>
+  </section>
+
+  <!-- Attractions Grid -->
+  <section class="section" style="padding-top: 40px;">
+    <div class="container">
+      <div class="card-grid" id="attractions-grid">
+        <!-- Rendered by JavaScript -->
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-content">
+        <div class="footer-section">
+          <h4>關於我們</h4>
+          <p>北京旅遊資訊平台，為您提供最新、最詳細的北京旅遊資訊。</p>
+        </div>
+        <div class="footer-section">
+          <h4>快速連結</h4>
+          <a href="list.html">景點列表</a>
+          <a href="foods.html">美食推薦</a>
+          <a href="../itinerary.html">推薦行程</a>
+          <a href="../info.html">實用資訊</a>
+        </div>
+        <div class="footer-section">
+          <h4>聯絡我們</h4>
+          <p>Email: info@beijing-trip.com</p>
+          <p>電話: +86 10 1234 5678</p>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <p>© 2024 北京旅遊. All rights reserved.</p>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Scripts -->
+  <script>
+    // Spots Data
+    const spotsData = [
+      {id: 'spot_01', name: '故宮紫禁城', location: '東城區景山前街4號', rating: 4.9, category: '宮殿', image: '../images/spots/spot_01_gugong.jpg', description: '明清兩代皇家宮殿，世界文化遺產'},
+      {id: 'spot_02', name: '慕田峪長城', location: '北京市懷柔區', rating: 4.8, category: '古蹟', image: '../images/spots/spot_02_mutianyu.jpg', description: '保存最完好長城路段'},
+      {id: 'spot_03', name: '頤和園', location: '北京市海淀區', rating: 4.8, category: '園林', image: '../images/spots/spot_03_yiheyuan.jpg', description: '清朝皇家園林'},
+      {id: 'spot_04', name: '天壇', location: '東城區', rating: 4.7, category: '古蹟', image: '../images/spots/spot_04_tiantan.jpg', description: '皇帝祭天場所'},
+      {id: 'spot_05', name: '鳥巢', location: '朝陽區', rating: 4.6, category: '現代', image: '../images/spots/spot_05_niaodao.jpg', description: '2008北京奧運主場館'},
+      {id: 'spot_06', name: '水立方', location: '朝陽區', rating: 4.5, category: '現代', image: '../images/spots/spot_06_shuilifang.jpg', description: '北京奧運游泳場館'},
+      {id: 'spot_07', name: '天安門廣場', location: '東城區', rating: 4.7, category: '古蹟', image: '../images/spots/spot_07_tiananmen.jpg', description: '世界最大城市廣場'},
+      {id: 'spot_08', name: '什剎海', location: '西城區', rating: 4.6, category: '景點', image: '../images/spots/spot_08_shichahai.jpg', description: '老北京胡同與水岸'},
+      {id: 'spot_09', name: '北海公園', location: '西城區', rating: 4.5, category: '園林', image: '../images/spots/spot_09_beihai.jpg', description: '皇家園林，白塔為地標'},
+      {id: 'spot_10', name: '雍和宮', location: '東城區', rating: 4.6, category: '寺廟', image: '../images/spots/spot_10_yonghegong.jpg', description: '最大藏傳佛教寺院'},
+      {id: 'spot_11', name: '潘家園', location: '朝陽區', rating: 4.4, category: '市集', image: '../images/spots/spot_11_panjiayuan.jpg', description: '北京古玩第一市'},
+      {id: 'spot_12', name: '景山公園', location: '東城區', rating: 4.5, category: '公園', image: '../images/spots/spot_12_jingshan.jpg', description: '俯瞰故宮全景'},
+    ];
+
+    // Render spots
+    function renderSpots(filter = 'all') {
+      const grid = document.getElementById('attractions-grid');
+      const filtered = filter === 'all' 
+        ? spotsData 
+        : spotsData.filter(s => s.category === filter);
+      
+      grid.innerHTML = filtered.map(spot => `
+        <a href="detail.html?id=${spot.id}" class="card fade-in">
+          <div class="card-image">
+            <img src="${spot.image}" alt="${spot.name}" loading="lazy">
+            <span class="card-badge">${spot.category}</span>
+          </div>
+          <div class="card-body">
+            <h3 class="card-title">${spot.name}</h3>
+            <div class="card-location">
+              <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path>
+                <circle cx="12" cy="10" r="3"></circle>
+              </svg>
+              <span>${spot.location}</span>
+            </div>
+            <p style="color: var(--text-secondary); font-size: 0.9rem; margin-bottom: 10px;">${spot.description}</p>
+            <div class="card-footer">
+              <div class="card-rating">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                  <polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon>
+                </svg>
+                <span>${spot.rating}</span>
+              </div>
+            </div>
+          </div>
+        </a>
+      `).join('');
+      
+      // Trigger animation
+      setTimeout(() => {
+        grid.querySelectorAll('.fade-in').forEach(el => el.classList.add('visible'));
+      }, 100);
+    }
+
+    // Filter buttons
+    document.querySelectorAll('.filter-btn').forEach(btn => {
+      btn.addEventListener('click', () => {
+        document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
+        btn.classList.add('active');
+        renderSpots(btn.dataset.filter);
+      });
+    });
+
+    // Initial render
+    renderSpots();
+  </script>
+  <script src="../js/main.js"></script>
+</body>
+</html>
