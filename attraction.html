@@ -1,1 +1,160 @@
-Hello
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>故宮紫禁城 - 北京旅遊</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+    body {
+      font-family: "Noto Sans TC", "Microsoft JhengHei", sans-serif;
+      background: #f8f5f0;
+      color: #333;
+      line-height: 1.6;
+    }
+    .detail-hero {
+      position: relative;
+      height: 60vh;
+      min-height: 400px;
+      overflow: hidden;
+    }
+    .detail-hero-bg {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-size: cover;
+      background-position: center;
+      filter: brightness(0.85);
+    }
+    .detail-hero::after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      width: 100%;
+      height: 100px;
+      background: linear-gradient(to top, #f8f5f0, transparent);
+    }
+    .detail-content {
+      max-width: 900px;
+      margin: -60px auto 0;
+      padding: 40px;
+      position: relative;
+      z-index: 1;
+    }
+    h1 {
+      font-family: "Noto Serif TC", "Microsoft JhengHei", serif;
+      font-size: 2.8rem;
+      color: #8B0000;
+      margin-bottom: 30px;
+      text-align: center;
+    }
+    .info-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 20px;
+      margin-bottom: 40px;
+    }
+    .info-box {
+      background: #fff;
+      padding: 20px;
+      border-radius: 12px;
+      box-shadow: 0 4px 20px rgba(0,0,0,0.08);
+      border-left: 4px solid #8B0000;
+    }
+    .info-box label {
+      display: block;
+      font-size: 0.85rem;
+      color: #888;
+      margin-bottom: 6px;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+    }
+    .info-box p {
+      font-size: 1.2rem;
+      font-weight: 500;
+      color: #333;
+    }
+    .description {
+      background: #fff;
+      padding: 40px;
+      border-radius: 16px;
+      box-shadow: 0 4px 20px rgba(0,0,0,0.08);
+    }
+    .description h3 {
+      font-family: "Noto Serif TC", serif;
+      font-size: 1.6rem;
+      color: #8B0000;
+      margin-bottom: 20px;
+      padding-bottom: 15px;
+      border-bottom: 2px solid #f0e6d3;
+    }
+    .description p {
+      font-size: 1.1rem;
+      color: #555;
+      line-height: 1.8;
+    }
+    .back-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      margin-bottom: 30px;
+      padding: 12px 24px;
+      background: #8B0000;
+      color: #fff;
+      text-decoration: none;
+      border-radius: 8px;
+      font-weight: 500;
+      transition: all 0.3s;
+    }
+    .back-btn:hover {
+      background: #a00000;
+      transform: translateX(-4px);
+    }
+    @media (max-width: 768px) {
+      .detail-hero {
+        height: 45vh;
+        min-height: 300px;
+      }
+      .detail-content {
+        margin: -40px 20px 0;
+        padding: 30px 20px;
+      }
+      h1 {
+        font-size: 2rem;
+      }
+      .info-grid {
+        grid-template-columns: 1fr;
+      }
+      .description {
+        padding: 25px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <section class="detail-hero">
+    <div class="detail-hero-bg" style="background-image: url('https://images.unsplash.com/photo-1508804185872-d7badad00f7d?w=1600&q=80');"></div>
+  </section>
+  <section class="detail-content">
+    <a href="index.html" class="back-btn">← 返回首頁</a>
+    <h1>故宮紫禁城</h1>
+    <div class="info-grid">
+      <div class="info-box"><label>開放時間</label><p>08:30-17:00</p></div>
+      <div class="info-box"><label>門票</label><p>旺季¥60，淡季¥40</p></div>
+      <div class="info-box"><label>地址</label><p>北京市東城區景山前街4號</p></div>
+      <div class="info-box"><label>評分</label><p>⭐ 4.9</p></div>
+    </div>
+    <div class="description">
+      <h3>關於故宮紫禁城</h3>
+      <p>故宮又名紫禁城，是明清兩代皇家宮殿，也是世界上現存規模最大、保存最完整的木質結構古建築群。佔地72萬平方公尺，建築面積約15萬平方公尺，擁有大小宮殿七十多座，房屋九千餘間。作為世界文化遺產，故宮不僅是中國古代宮殿建筑的巔峰之作，更是了解中華五千年文明的重要窗口。1987年被聯合國教科文組織列為世界文化遺產。</p>
+    </div>
+  </section>
+</body>
+</html>
