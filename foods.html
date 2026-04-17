@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>美食推薦 | 北京旅遊</title>
+  <meta name="description" content="北京美食推薦 - 全聚德烤鸭、東來順、炸醬麵等經典美食">
+  
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@400;500;700&family=Noto+Serif+SC:wght@700&display=swap" rel="stylesheet">
+  
+  <!-- Styles -->
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body data-page="food">
+  
+  <!-- Header -->
+  <header class="header">
+    <div class="container">
+      <a href="index.html" class="logo">
+        <div class="logo-icon">🏯</div>
+        <span>北京旅遊</span>
+      </a>
+      <nav class="nav">
+        <a href="index.html">首頁</a>
+        <a href="attractions.html">景點</a>
+        <a href="foods.html" class="active">美食</a>
+        <a href="itinerary.html">行程</a>
+        <a href="info.html">資訊</a>
+      </nav>
+      <div class="nav-toggle">
+        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <line x1="3" y1="12" x2="21" y2="12"></line>
+          <line x1="3" y1="6" x2="21" y2="6"></line>
+          <line x1="3" y1="18" x2="21" y2="18"></line>
+        </svg>
+      </div>
+    </div>
+  </header>
+
+  <!-- Page Header -->
+  <section class="page-header">
+    <div class="container">
+      <h1 class="page-title">北京美食</h1>
+      <div class="breadcrumbs">
+        <a href="index.html">首頁</a>
+        <span>›</span>
+        <span>美食推薦</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- Food Filter -->
+  <section class="section" style="padding-bottom: 0;">
+    <div class="container">
+      <div class="filter-bar">
+        <button class="filter-btn active" data-filter="all">全部美食</button>
+        <button class="filter-btn" data-filter="宮廷菜">宮廷菜</button>
+        <button class="filter-btn" data-filter="火鍋">火鍋</button>
+        <button class="filter-btn" data-filter="小吃">小吃</button>
+      </div>
+    </div>
+  </section>
+
+  <!-- Food Grid -->
+  <section class="section">
+    <div class="container">
+      <div class="card-grid" id="food-grid">
+        <!-- Rendered by JavaScript -->
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-content">
+        <div class="footer-section">
+          <h4>關於我們</h4>
+          <p>北京旅遊資訊平台，為您提供最新、最詳細的北京旅遊資訊。</p>
+        </div>
+        <div class="footer-section">
+          <h4>快速連結</h4>
+          <a href="attractions.html">景點列表</a>
+          <a href="foods.html">美食推薦</a>
+          <a href="itinerary.html">推薦行程</a>
+          <a href="info.html">實用資訊</a>
+        </div>
+        <div class="footer-section">
+          <h4>聯絡我們</h4>
+          <p>Email: info@beijing-trip.com</p>
+          <p>電話: +86 10 1234 5678</p>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <p>© 2026 北京旅遊. All rights reserved.</p>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Scripts -->
+  <script>
+    // Food Data
+    const foodData = [
+      {id: 'food_01', name: '全聚德烤鸭', location: '和平門外大街', cuisine: '宮廷菜', price: '¥150-200', priceRange: '$$$', rating: 4.7, image: 'images/food/food_01_quanjude.jpg', description: '百年老字號，果木烤鴨，表皮酥脆，肉質鮮嫩'},
+      {id: 'food_02', name: '東來順', location: '王府井大街', cuisine: '火鍋', price: '¥100-150', priceRange: '$$', rating: 4.6, image: 'images/food/food_02_donglaishun.jpg', description: '老字號銅鍋涮肉，手切羊肉'},
+      {id: 'food_03', name: '炸醬麵', location: '胡同內小店', cuisine: '小吃', price: '¥25-40', priceRange: '$', rating: 4.5, image: 'images/food/food_03_zajiangmian.jpg', description: '老北京道地小吃，醬香濃郁'},
+      {id: 'food_04', name: '羊蝎子火鍋', location: '簋街', cuisine: '火鍋', price: '¥80-120', priceRange: '$$', rating: 4.6, image: 'images/food/food_04_yangxiezi.jpg', description: '老北京特色火鍋，羊脊髓入味'},
+      {id: 'food_05', name: '銅鍋涮肉', location: '磁器口', cuisine: '火鍋', price: '¥100-150', priceRange: '$$', rating: 4.7, image: 'images/food/food_05_tongguoshuanyuro.jpg', description: '2025北京必吃榜，傳統銅鍋'},
+      {id: 'food_06', name: '京味小吃', location: '南鑼鼓巷', cuisine: '小吃', price: '¥20-50', priceRange: '$', rating: 4.4, image: 'images/food/food_06_jingweixiaochi.jpg', description: '豆汁、驢打滾、艾窩窩等傳統小吃'},
+    ];
+
+    // Render Food Cards
+    document.addEventListener('DOMContentLoaded', function() {
+      var foodGrid = document.getElementById('food-grid');
+      if (foodGrid) {
+        foodGrid.innerHTML = foodData.map(function(food) {
+          return '<div class="card fade-in" data-category="'+food.cuisine+'">' +
+            '<div class="card-image"><img src="'+food.image+'" alt="'+food.name+'"><span class="card-badge">'+food.cuisine+'</span></div>' +
+            '<div class="card-body">' +
+              '<h3 class="card-title">'+food.name+'</h3>' +
+              '<div class="card-location">'+food.location+'</div>' +
+              '<p class="card-description">'+food.description+'</p>' +
+              '<div class="card-footer">' +
+                '<div class="card-rating">★ '+food.rating+'</div>' +
+                '<div class="card-price">'+food.price+'</div>' +
+              '</div>' +
+            '</div>' +
+          '</div>';
+        }).join('');
+      }
+
+      // Filter Functionality
+      var filterBtns = document.querySelectorAll('.filter-btn');
+      filterBtns.forEach(function(btn) {
+        btn.addEventListener('click', function() {
+          var filter = this.getAttribute('data-filter');
+          filterBtns.forEach(function(b) { b.classList.remove('active'); });
+          this.classList.add('active');
+          var cards = document.querySelectorAll('#food-grid .card');
+          cards.forEach(function(card) {
+            if (filter === 'all' || card.getAttribute('data-category') === filter) {
+              card.style.display = '';
+            } else {
+              card.style.display = 'none';
+            }
+          });
+        });
+      });
+    });
+  </script>
+</body>
+</html>
